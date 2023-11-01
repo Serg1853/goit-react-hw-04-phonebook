@@ -1,0 +1,17 @@
+.label {
+  display: flex;
+  gap: 10px;
+  flex-direction: column;
+  margin-bottom: 16px;
+  font-size: 18px;
+  font-weight: 500;
+  max-width: 200px;
+  cursor: pointer;
+}
+.input {
+  padding: 0px 4px;
+  font-size: 18px;
+  font-weight: 500;
+
+  cursor: pointer;
+}
