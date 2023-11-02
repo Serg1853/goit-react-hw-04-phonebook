@@ -1,11 +1,11 @@
 import { nanoid } from 'nanoid';
+import { useState } from 'react';
+import { Notify } from 'notiflix/build/notiflix-notify-aio';
 import ContactList from './ContactList/ContactList';
 // import { useEffect } from 'react';
 import ContactForm from './ContactForm/ContactForm';
 import Filter from './Filter/Filter';
 import css from './App.module.css';
-import { useState } from 'react';
-import { Notify } from 'notiflix/build/notiflix-notify-aio';
 import useLocalStorage from './useLocalStorage';
 
 export const App = () => {
