@@ -1,14 +1,14 @@
 import { nanoid } from 'nanoid';
 import ContactList from './ContactList/ContactList';
-import { useEffect } from 'react';
+// import { useEffect } from 'react';
 import ContactForm from './ContactForm/ContactForm';
 import Filter from './Filter/Filter';
 import css from './App.module.css';
 import { useState } from 'react';
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
+import useLocalStorage from './useLocalStorage';
 
 export const App = () => {
-  // const LS_KEY = 'contacts';
   const defaultContacts = [
     { id: 'id-1', name: 'Rosie Simpson', number: '459-12-56' },
     { id: 'id-2', name: 'Hermione Kline', number: '443-89-12' },
@@ -16,18 +16,8 @@ export const App = () => {
     { id: 'id-4', name: 'Annie Copeland', number: '227-91-26' },
   ];
 
-  // const startState = JSON.parse(localStorage.getItem(LS_KEY));
-  // console.log('startState', startState);
-  // console.log('defaultContacts', defaultContacts);
-
-  const [contacts, setContacts] = useState(
-    () => JSON.parse(localStorage.getItem('contacts')) ?? defaultContacts
-  );
+  const [contacts, setContacts] = useLocalStorage('contacts', defaultContacts);
   const [filter, setFilter] = useState('');
-
-  useEffect(() => {
-    localStorage.setItem('contacts', JSON.stringify(contacts));
-  }, [contacts]);
 
   const onSubmitForm = data => {
     const newObj = { ...data, id: nanoid() };
