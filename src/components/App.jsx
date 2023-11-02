@@ -21,7 +21,7 @@ export const App = () => {
   // console.log('defaultContacts', defaultContacts);
 
   const [contacts, setContacts] = useState(
-    JSON.parse(localStorage.getItem('contacts')) ?? defaultContacts
+    () => JSON.parse(localStorage.getItem('contacts')) ?? defaultContacts
   );
   const [filter, setFilter] = useState('');
 
