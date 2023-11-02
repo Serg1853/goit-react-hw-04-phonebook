@@ -1,5 +1,5 @@
 import css from './Filter.module.css';
-const Filter = ({ value, onChangeFilter }) => {
+const Filter = ({ filter, onChangeFilter }) => {
   return (
     <div>
       <label className={css.label}>
@@ -7,8 +7,8 @@ const Filter = ({ value, onChangeFilter }) => {
         <input
           className={css.input}
           type="text"
-          value={value}
-          onChange={event => onChangeFilter(event.target.value)}
+          value={filter}
+          onChange={onChangeFilter}
         />
       </label>
     </div>
