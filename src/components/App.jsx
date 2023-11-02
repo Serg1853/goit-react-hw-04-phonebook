@@ -8,7 +8,7 @@ import { useState } from 'react';
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
 
 export const App = () => {
-  const LS_KEY = 'contacts';
+  // const LS_KEY = 'contacts';
   const defaultContacts = [
     { id: 'id-1', name: 'Rosie Simpson', number: '459-12-56' },
     { id: 'id-2', name: 'Hermione Kline', number: '443-89-12' },
@@ -16,17 +16,17 @@ export const App = () => {
     { id: 'id-4', name: 'Annie Copeland', number: '227-91-26' },
   ];
 
-  const startState = JSON.parse(localStorage.getItem(LS_KEY));
+  // const startState = JSON.parse(localStorage.getItem(LS_KEY));
   // console.log('startState', startState);
   // console.log('defaultContacts', defaultContacts);
 
   const [contacts, setContacts] = useState(
-    () => [...startState] ?? defaultContacts
+    JSON.parse(localStorage.getItem('contacts')) ?? defaultContacts
   );
   const [filter, setFilter] = useState('');
 
   useEffect(() => {
-    localStorage.setItem(LS_KEY, JSON.stringify(contacts));
+    localStorage.setItem('contacts', JSON.stringify(contacts));
   }, [contacts]);
 
   const onSubmitForm = data => {
